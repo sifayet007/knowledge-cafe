@@ -1,7 +1,8 @@
+import { prototype } from "postcss/lib/previous-map";
 import PropTypes from "prop-types";
 import { FaBookmark } from "react-icons/fa";
 
-const Blog = ({ blog, handleAddToBookmark }) => {
+const Blog = ({ blog, handleAddToBookmark, handleMarkAsRead }) => {
   const {
     title,
     cover,
@@ -37,7 +38,9 @@ const Blog = ({ blog, handleAddToBookmark }) => {
           </button>
         </div>
       </div>
-      <h2 className="text-4xl font-bold my-4 ">Title: {title}</h2>
+      <h2 className="text-[clamp(20px, 50%, 50px)] font-bold my-4 ">
+        Title: {title}
+      </h2>
       <p className="mb-5">
         {hashtags.map((hash, idx) => (
           <span key={idx}>
@@ -45,17 +48,21 @@ const Blog = ({ blog, handleAddToBookmark }) => {
           </span>
         ))}
       </p>
-      <span className="">
-        <a className="underline text-[#6047EC]" href="">
-          Mark as read
-        </a>
-      </span>
+      {/* read mark button  */}
+      <button
+        onClick={() => handleMarkAsRead(reading_time)}
+        className="underline text-[#6047EC]"
+      >
+        Mark as read
+      </button>
+
       <hr className="my-10" />
     </div>
   );
 };
 Blog.PropTypes = {
   blog: PropTypes.object.isRequired,
+  handleMarkAsRead: prototype.func,
 };
 
 export default Blog;

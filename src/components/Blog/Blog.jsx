@@ -13,7 +13,7 @@ const Blog = ({ blog, handleAddToBookmark }) => {
   } = blog;
 
   return (
-    <div className="">
+    <div className="mt-8">
       <img
         className="rounded-lg w-full"
         src={cover}
@@ -30,7 +30,7 @@ const Blog = ({ blog, handleAddToBookmark }) => {
         <div>
           <span>{reading_time} min red</span>
           <button
-            onClick={() => handleAddToBookmark()}
+            onClick={() => handleAddToBookmark(blog)}
             className="ml-2 text-xl text-orange-400"
           >
             <FaBookmark></FaBookmark>
